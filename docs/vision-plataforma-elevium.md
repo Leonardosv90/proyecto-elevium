@@ -29,6 +29,7 @@ Elevium debe crecer como un ecosistema que combine:
 - Produccion audiovisual.
 - Produccion fisica de marca: merch, impresion, sublimacion, estampado y material publicitario.
 - Recursos, capacitaciones y membresias.
+- Asistente IA dentro del sitio para orientar visitantes y resolver dudas.
 
 La meta no es tener solo una pagina bonita, sino construir un sistema comercial y educativo que pueda captar prospectos, mostrar autoridad, administrar contenido, vender productos/servicios y formar una comunidad.
 
@@ -48,6 +49,7 @@ Debe evolucionar para incluir:
 - Recursos descargables.
 - Contacto y WhatsApp.
 - Seccion de produccion de marca / merch corporativo.
+- Asistente IA visible en el sitio para preguntas, orientacion y apoyo comercial.
 
 Rol del sitio:
 
@@ -414,6 +416,73 @@ Primero vender paquetes y cotizaciones B2B. Despues, cuando ya haya claridad de 
 
 Esto evita empezar con una tienda compleja antes de validar que productos compran mas las empresas.
 
+### 11. Asistente IA para visitantes
+
+Se planteo integrar un agente de IA dentro del sitio, tipo chatbot, para ayudar a las personas durante su visita.
+
+La idea no es que sea un chat generico, sino un asistente entrenado con la informacion de Elevium.
+
+Objetivos:
+
+- Resolver dudas frecuentes.
+- Explicar como trabaja Elevium.
+- Recomendar servicios segun la necesidad del visitante.
+- Guiar hacia el diagnostico estrategico.
+- Recomendar recursos, guias o contenidos.
+- Ayudar a entender el Metodo ELEVAR.
+- Capturar datos cuando el usuario este listo.
+- Derivar a WhatsApp o contacto humano cuando sea necesario.
+
+Casos de uso:
+
+- "No se que servicio necesito."
+- "Quiero mejorar mi marca personal."
+- "Necesito contenido para mi negocio."
+- "Como funciona el diagnostico?"
+- "Que incluye el Metodo ELEVAR?"
+- "Tienen productos publicitarios para empresas?"
+- "Quiero una capacitacion para mi equipo."
+- "Como puedo empezar?"
+
+Funciones iniciales recomendadas:
+
+- Boton flotante de chat.
+- Respuestas sobre servicios, metodo, recursos, diagnostico y contacto.
+- Preguntas sugeridas para iniciar conversacion.
+- Captura opcional de nombre, WhatsApp y correo.
+- Enlace directo a diagnostico.
+- Enlace directo a WhatsApp con contexto de la conversacion.
+- Registro de conversaciones para detectar dudas frecuentes.
+
+Funciones futuras:
+
+- Recomendador inteligente de servicio.
+- Generador de brief inicial.
+- Resumen automatico para el equipo comercial.
+- Integracion con base de leads.
+- Integracion con recursos descargables.
+- Soporte a clientes o miembros.
+- Asistente dentro del area de cursos.
+
+Contenido que debe conocer:
+
+- Que es Elevium.
+- Metodo ELEVAR.
+- Servicios.
+- Diagnostico estrategico.
+- Recursos.
+- Casos de estudio.
+- Proceso de trabajo.
+- Produccion de marca y merch corporativo.
+- Preguntas frecuentes.
+- Politicas basicas de privacidad y contacto.
+
+Enfoque recomendado:
+
+Primero crear un asistente simple con respuestas controladas y base de conocimiento pequena. Despues, cuando haya mas contenido y datos, convertirlo en un agente mas avanzado conectado al panel, recursos, CRM y membership.
+
+El asistente debe sentirse util, claro y humano. No debe inventar informacion, prometer resultados garantizados ni reemplazar una conversacion estrategica real cuando el caso necesita criterio humano.
+
 ## Arquitectura funcional futura
 
 La plataforma puede organizarse en estas areas:
@@ -428,6 +497,7 @@ Sitio publico
   Diagnostico
   Contacto
   Produccion de marca / merch corporativo
+  Asistente IA de orientacion
 
 Panel admin
   Leads
@@ -436,6 +506,7 @@ Panel admin
   Servicios
   Recursos
   Productos B2B
+  Conversaciones del asistente IA
   Analitica
   Usuarios
 
@@ -534,6 +605,17 @@ Cuando el proyecto migre a una plataforma dinamica, estas serian las primeras en
 - Tipo: gratis, pago o membresia.
 - Estado.
 
+### Conversaciones del asistente IA
+
+- Visitante anonimo o lead asociado.
+- Mensajes.
+- Pagina donde inicio la conversacion.
+- Servicio o tema detectado.
+- Intencion: informacion, diagnostico, recurso, cotizacion, curso o contacto.
+- Resumen automatico.
+- Estado: abierto, convertido, derivado o cerrado.
+- Fecha.
+
 ## Prioridades recomendadas
 
 ### Prioridad 1 - Conversion del sitio actual
@@ -573,6 +655,20 @@ Tareas:
 - Notas internas.
 - Origen de cada lead.
 - Dashboard simple.
+
+### Prioridad 3.5 - Asistente IA del sitio
+
+El asistente puede construirse despues de tener clara la informacion comercial base, pero antes de la membresia.
+
+Tareas:
+
+- Definir personalidad y limites del asistente.
+- Crear base de conocimiento inicial.
+- Crear interfaz de chat.
+- Registrar conversaciones.
+- Conectar con diagnostico y WhatsApp.
+- Medir preguntas frecuentes.
+- Derivar a humano cuando aplique.
 
 ### Prioridad 4 - Produccion de marca B2B
 
@@ -699,7 +795,23 @@ Acciones:
 - Medir origen de trafico.
 - Dashboard simple de conversion.
 
-### Fase 5 - Recursos dinamicos y lead magnets
+### Fase 5 - Asistente IA comercial
+
+Objetivo:
+
+Ayudar al visitante dentro del sitio y convertir dudas en oportunidades comerciales.
+
+Acciones:
+
+- Crear widget de chat.
+- Entrenar base de conocimiento inicial.
+- Responder preguntas frecuentes.
+- Recomendar servicios o recursos.
+- Conectar con diagnostico.
+- Conectar con WhatsApp.
+- Guardar conversaciones y resumenes.
+
+### Fase 6 - Recursos dinamicos y lead magnets
 
 Objetivo:
 
@@ -713,7 +825,7 @@ Acciones:
 - Etiquetar categorias.
 - Medir descargas.
 
-### Fase 6 - Tienda / catalogo B2B
+### Fase 7 - Tienda / catalogo B2B
 
 Objetivo:
 
@@ -728,7 +840,7 @@ Acciones:
 - Productos destacados.
 - Paquetes corporativos.
 
-### Fase 7 - Membership y capacitaciones
+### Fase 8 - Membership y capacitaciones
 
 Objetivo:
 
@@ -759,6 +871,8 @@ Estas decisiones no deben resolverse todas de inmediato, pero si conviene tenerl
 - Si el panel admin sera construido a medida o con una herramienta tipo CMS.
 - Estructura de precios para cursos/membresia.
 - Politica de privacidad y consentimiento de datos.
+- Si el asistente IA usara respuestas cerradas, IA generativa o una combinacion.
+- Que informacion podra capturar el asistente y como se pedira consentimiento.
 
 ## Primer backlog sugerido
 
@@ -771,7 +885,8 @@ Estas son tareas pequenas y ordenadas para empezar sin saltar directamente a una
 5. Conectar diagnostico a un destino real.
 6. Agregar eventos basicos de conversion.
 7. Definir primera version de politica de privacidad.
-8. Preparar migracion a Next.js cuando el sitio estatico ya tenga el flujo validado.
+8. Definir base de conocimiento inicial para el asistente IA.
+9. Preparar migracion a Next.js cuando el sitio estatico ya tenga el flujo validado.
 
 ## Criterios para decidir si algo entra ahora o despues
 
@@ -800,8 +915,9 @@ La prioridad debe ser avanzar por capas:
 1. Sitio que convierte.
 2. Contenido editable.
 3. Leads y datos.
-4. Recursos y autoridad.
-5. Produccion de marca.
-6. Membership.
+4. Asistente IA y seguimiento.
+5. Recursos y autoridad.
+6. Produccion de marca.
+7. Membership.
 
 La vision es grande, pero se puede construir de forma ordenada si cada fase entrega valor real antes de pasar a la siguiente.
