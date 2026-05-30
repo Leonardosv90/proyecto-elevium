@@ -276,6 +276,298 @@ document.querySelectorAll("[data-filter]").forEach((button) => {
   });
 });
 
+const methodDetails = [
+  {
+    letter: "E",
+    title: "Explorar",
+    eyebrow: "Fase 01",
+    summary: "Entendemos la marca, la oferta, el publico y las prioridades antes de proponer contenido o acciones.",
+    detail: "Esta fase evita empezar por piezas sueltas. Primero aclaramos que vendes, a quien quieres atraer, que te diferencia, que percepcion tienes hoy y que objetivo comercial debe sostener la comunicacion.",
+    includes: [
+      "Lectura de marca, oferta y propuesta de valor.",
+      "Identificacion del publico ideal y sus dolores reales.",
+      "Revision de objetivos, prioridades y oportunidades inmediatas."
+    ],
+    output: "Un mapa inicial de direccion para saber que debe comunicar la marca y que debe evitar."
+  },
+  {
+    letter: "L",
+    title: "Leer",
+    eyebrow: "Fase 02",
+    summary: "Diagnosticamos presencia digital, competencia, mensajes, canales y puntos de mejora.",
+    detail: "Aqui observamos lo que la marca ya muestra al mercado: perfiles, contenido, coherencia visual, confianza, llamados a la accion y oportunidades frente a competidores o referentes.",
+    includes: [
+      "Auditoria de presencia digital y contenido.",
+      "Lectura de competidores, referentes y oportunidades.",
+      "Identificacion de brechas de claridad, autoridad y conversion."
+    ],
+    output: "Un diagnostico claro de lo que funciona, lo que confunde y lo que conviene corregir primero."
+  },
+  {
+    letter: "E",
+    title: "Estructurar",
+    eyebrow: "Fase 03",
+    summary: "Convertimos la informacion en pilares, narrativa, tono, mensajes y sistema de publicacion.",
+    detail: "Esta fase ordena las ideas para que la marca no dependa de ocurrencias. Se define que temas sostienen la autoridad, como se habla, que argumentos se repiten y como se conecta el contenido con objetivos.",
+    includes: [
+      "Pilares de contenido y mensajes principales.",
+      "Tono, narrativa y enfoque visual.",
+      "Sistema editorial conectado a objetivos comerciales."
+    ],
+    output: "Una estructura de comunicacion que permite producir con coherencia y menos improvisacion."
+  },
+  {
+    letter: "V",
+    title: "Visibilizar",
+    eyebrow: "Fase 04",
+    summary: "Creamos contenido, diseno y recursos que muestran el valor de la marca con claridad.",
+    detail: "La visibilidad no es solo aparecer. Es aparecer con una presencia que se entienda, se recuerde y genere confianza. Aqui se producen piezas, recursos y activos digitales alineados al sistema.",
+    includes: [
+      "Contenido educativo, comercial y de autoridad.",
+      "Diseno visual coherente con la marca.",
+      "Recursos para captar interes y abrir conversaciones."
+    ],
+    output: "Activos digitales listos para comunicar valor y sostener presencia profesional."
+  },
+  {
+    letter: "A",
+    title: "Acelerar",
+    eyebrow: "Fase 05",
+    summary: "Usamos IA, automatizacion y procesos para producir mejor, responder mas rapido y escalar.",
+    detail: "Cuando la base esta ordenada, la IA puede acelerar sin volver caotica la comunicacion. Se crean flujos, plantillas, asistentes o procesos que ahorran tiempo y mantienen criterio.",
+    includes: [
+      "Flujos de respuesta y seguimiento.",
+      "Plantillas, prompts y sistemas asistidos por IA.",
+      "Automatizaciones para captacion, contenido o atencion."
+    ],
+    output: "Un sistema mas eficiente que permite crecer sin depender de trabajo manual para todo."
+  },
+  {
+    letter: "R",
+    title: "Refinar",
+    eyebrow: "Fase 06",
+    summary: "Medimos, aprendemos y optimizamos para mejorar claridad, conversion y resultados.",
+    detail: "La estrategia no termina al publicar. Se revisan datos, preguntas frecuentes, respuestas del mercado y oportunidades de mejora para ajustar contenido, procesos y ofertas.",
+    includes: [
+      "Revision de metricas y comportamiento.",
+      "Ajustes de mensajes, piezas y embudos.",
+      "Mejora continua de contenido, captacion y posicionamiento."
+    ],
+    output: "Un ciclo de aprendizaje para que la marca no solo publique, sino mejore con direccion."
+  }
+];
+
+const serviceDetails = [
+  {
+    title: "Marca personal y autoridad digital",
+    category: "Autoridad",
+    image: "mpfs3onp-ChatGPT-Image-20-may-2026_-10_39_30-p.m.-_1_.webp",
+    intro: "Para profesionales que venden confianza, experiencia y criterio, pero necesitan comunicarlo con mas claridad.",
+    sections: [
+      ["Para quien es", "Consultores, especialistas, coaches, medicos, abogados, asesores, formadores y lideres que necesitan posicionarse como referentes."],
+      ["Que trabajamos", "Mensaje central, propuesta de valor, pilares de contenido, narrativa personal, imagen profesional y ruta de autoridad."],
+      ["Resultado esperado", "Una marca personal mas clara, confiable y preparada para atraer oportunidades, clientes o alianzas."]
+    ],
+    bullets: ["Diagnostico de autoridad", "Pilares de contenido", "Narrativa profesional", "Sistema visual inicial"]
+  },
+  {
+    title: "Estrategia y gestion de contenido",
+    category: "Contenido",
+    image: "mpfs46n7-ChatGPT-Image-20-may-2026_-10_28_19-p.m.-_1_.webp",
+    intro: "Para marcas que ya publican o quieren publicar, pero necesitan un sistema que conecte contenido con objetivos.",
+    sections: [
+      ["Para quien es", "Negocios que sienten que publican al azar, dependen de ideas de ultimo momento o no logran sostener constancia."],
+      ["Que trabajamos", "Calendario editorial, temas estrategicos, copywriting, formatos, publicaciones, reportes y ajustes."],
+      ["Resultado esperado", "Contenido mas coherente, facil de sostener y alineado a confianza, educacion y conversion."]
+    ],
+    bullets: ["Calendario editorial", "Copy y guiones", "Piezas para redes", "Revision y optimizacion"]
+  },
+  {
+    title: "Branding y diseño digital",
+    category: "Imagen",
+    image: "mpfs46pk-ChatGPT-Image-20-may-2026_-10_28_19-p.m.-_2_.webp",
+    intro: "Para elevar la percepcion visual de la marca y hacer que cada punto de contacto se sienta mas profesional.",
+    sections: [
+      ["Para quien es", "Marcas que tienen una buena oferta, pero su imagen no transmite el mismo nivel de calidad o confianza."],
+      ["Que trabajamos", "Linea grafica, plantillas, piezas comerciales, recursos visuales, presentaciones y coherencia de marca."],
+      ["Resultado esperado", "Una presencia visual mas ordenada, elegante y facil de reconocer."]
+    ],
+    bullets: ["Linea grafica", "Plantillas digitales", "Material comercial", "Sistema visual"]
+  },
+  {
+    title: "Producción audiovisual",
+    category: "Producción",
+    image: "mpfrznvw-ChatGPT-Image-20-may-2026_-09_42_54-p.m..webp",
+    intro: "Para mostrar el lado humano, experto y profesional de la marca con fotos, videos y piezas de contenido.",
+    sections: [
+      ["Para quien es", "Profesionales y negocios que necesitan verse confiables, actuales y cercanos sin perder formalidad."],
+      ["Que trabajamos", "Fotografia, reels, videos educativos, piezas de autoridad, contenido para campanas y material institucional."],
+      ["Resultado esperado", "Una biblioteca visual que permite comunicar mejor y producir contenido con mas fuerza."]
+    ],
+    bullets: ["Fotografia profesional", "Reels", "Videos educativos", "Contenido para campanas"]
+  },
+  {
+    title: "Web y captación digital",
+    category: "Captación",
+    image: "mpg0bp42-ChatGPT-Image-21-may-2026_-03_32_21-p.m..webp",
+    intro: "Para convertir visitas e interes en conversaciones, solicitudes, descargas o leads reales.",
+    sections: [
+      ["Para quien es", "Marcas que ya generan atencion, pero no tienen una ruta clara para captar prospectos o medir oportunidades."],
+      ["Que trabajamos", "Landing pages, formularios, lead magnets, paginas de servicio, diagnosticos, medicion y rutas a WhatsApp."],
+      ["Resultado esperado", "Un sistema de captacion mas claro que no dependa solo de mensajes sueltos en redes."]
+    ],
+    bullets: ["Landing pages", "Formularios", "Lead magnets", "Medicion de conversion"]
+  },
+  {
+    title: "IA y automatización",
+    category: "IA",
+    image: "mpfs475y-ChatGPT-Image-20-may-2026_-10_28_21-p.m.-_6_.webp",
+    intro: "Para ahorrar tiempo, ordenar procesos y usar inteligencia artificial con criterio comercial.",
+    sections: [
+      ["Para quien es", "Negocios que quieren responder mejor, crear mas rapido, organizar tareas o automatizar procesos repetitivos."],
+      ["Que trabajamos", "Chatbots, asistentes IA, flujos de respuesta, prompts, automatizaciones y procesos internos."],
+      ["Resultado esperado", "Mas eficiencia sin perder control, criterio ni calidad en la comunicacion."]
+    ],
+    bullets: ["Chatbots", "Asistentes IA", "Flujos de respuesta", "Automatizaciones"]
+  }
+];
+
+let activeModalItems = [];
+let activeModalIndex = 0;
+
+function getOrCreateDetailModal() {
+  let modal = document.querySelector("[data-detail-modal]");
+  if (modal) return modal;
+
+  modal = document.createElement("div");
+  modal.className = "detail-modal";
+  modal.setAttribute("data-detail-modal", "");
+  modal.setAttribute("aria-hidden", "true");
+  modal.innerHTML = `
+    <div class="detail-modal__overlay" data-modal-close></div>
+    <section class="detail-modal__panel" role="dialog" aria-modal="true" aria-labelledby="detail-modal-title">
+      <button class="detail-modal__close" type="button" data-modal-close aria-label="Cerrar">×</button>
+      <div class="detail-modal__media" data-modal-media></div>
+      <div class="detail-modal__content">
+        <span class="eyebrow" data-modal-eyebrow></span>
+        <h2 id="detail-modal-title" data-modal-title></h2>
+        <p class="lead" data-modal-summary></p>
+        <div class="detail-modal__body" data-modal-body></div>
+        <div class="detail-modal__nav">
+          <button class="btn btn-ghost" type="button" data-modal-prev>Anterior</button>
+          <a class="btn btn-primary" href="diagnostico.html">Solicitar diagnóstico</a>
+          <button class="btn btn-ghost" type="button" data-modal-next>Siguiente</button>
+        </div>
+      </div>
+    </section>
+  `;
+  document.body.append(modal);
+
+  modal.querySelectorAll("[data-modal-close]").forEach((item) => {
+    item.addEventListener("click", closeDetailModal);
+  });
+  modal.querySelector("[data-modal-prev]").addEventListener("click", () => openDetailModal(activeModalItems, activeModalIndex - 1));
+  modal.querySelector("[data-modal-next]").addEventListener("click", () => openDetailModal(activeModalItems, activeModalIndex + 1));
+
+  window.addEventListener("keydown", (event) => {
+    if (!document.body.classList.contains("detail-modal-open")) return;
+    if (event.key === "Escape") closeDetailModal();
+    if (event.key === "ArrowLeft" && activeModalIndex > 0) openDetailModal(activeModalItems, activeModalIndex - 1);
+    if (event.key === "ArrowRight" && activeModalIndex < activeModalItems.length - 1) openDetailModal(activeModalItems, activeModalIndex + 1);
+  });
+
+  return modal;
+}
+
+function renderMethodBody(item) {
+  return `
+    <p>${item.detail}</p>
+    <div class="detail-modal__columns">
+      <div>
+        <h3>Qué hacemos</h3>
+        <ul>${item.includes.map((point) => `<li>${point}</li>`).join("")}</ul>
+      </div>
+      <div>
+        <h3>Entregable</h3>
+        <p>${item.output}</p>
+      </div>
+    </div>
+  `;
+}
+
+function renderServiceBody(item) {
+  return `
+    <div class="detail-modal__chips">${item.bullets.map((point) => `<span>${point}</span>`).join("")}</div>
+    <div class="detail-modal__sections">
+      ${item.sections.map(([title, copy]) => `<article><h3>${title}</h3><p>${copy}</p></article>`).join("")}
+    </div>
+  `;
+}
+
+function openDetailModal(items, index) {
+  const modal = getOrCreateDetailModal();
+  activeModalItems = items;
+  activeModalIndex = Math.min(Math.max(index, 0), items.length - 1);
+  const item = activeModalItems[activeModalIndex];
+  const isService = Boolean(item.image);
+  const media = modal.querySelector("[data-modal-media]");
+
+  modal.querySelector("[data-modal-eyebrow]").textContent = item.eyebrow || item.category;
+  modal.querySelector("[data-modal-title]").textContent = isService ? item.title : `${item.letter} · ${item.title}`;
+  modal.querySelector("[data-modal-summary]").textContent = item.summary || item.intro;
+  modal.querySelector("[data-modal-body]").innerHTML = isService ? renderServiceBody(item) : renderMethodBody(item);
+
+  if (isService) {
+    media.innerHTML = `<img src="${item.image}" alt="${item.title}">`;
+    media.hidden = false;
+  } else {
+    media.innerHTML = `<strong>${item.letter}</strong><span>${item.title}</span>`;
+    media.hidden = false;
+  }
+
+  modal.querySelector("[data-modal-prev]").hidden = activeModalIndex === 0;
+  modal.querySelector("[data-modal-next]").hidden = activeModalIndex === activeModalItems.length - 1;
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("detail-modal-open");
+  modal.querySelector(".detail-modal__close").focus();
+}
+
+function closeDetailModal() {
+  const modal = document.querySelector("[data-detail-modal]");
+  if (!modal) return;
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("detail-modal-open");
+}
+
+document.querySelectorAll(".method-rail .phase").forEach((phase, index) => {
+  phase.setAttribute("role", "button");
+  phase.setAttribute("tabindex", "0");
+  phase.setAttribute("aria-label", `Ver fase ${methodDetails[index]?.title || index + 1}`);
+  phase.addEventListener("click", () => openDetailModal(methodDetails, index));
+  phase.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDetailModal(methodDetails, index);
+    }
+  });
+});
+
+document.querySelectorAll(".service-matrix .service-row").forEach((row, index) => {
+  row.setAttribute("role", "button");
+  row.setAttribute("tabindex", "0");
+  row.setAttribute("aria-label", `Ver detalle de ${serviceDetails[index]?.title || "servicio"}`);
+  row.addEventListener("click", (event) => {
+    if (event.target.closest("a")) return;
+    openDetailModal(serviceDetails, index);
+  });
+  row.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDetailModal(serviceDetails, index);
+    }
+  });
+});
+
 const CINEMATIC_BACKGROUNDS = {
   default: [
     "mpfs470u-ChatGPT-Image-20-may-2026_-10_28_20-p.m.-_5_.webp",
