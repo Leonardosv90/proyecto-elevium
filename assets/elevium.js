@@ -288,7 +288,18 @@ const methodDetails = [
       "Identificacion del publico ideal y sus dolores reales.",
       "Revision de objetivos, prioridades y oportunidades inmediatas."
     ],
-    output: "Un mapa inicial de direccion para saber que debe comunicar la marca y que debe evitar."
+    output: "Un mapa inicial de direccion para saber que debe comunicar la marca y que debe evitar.",
+    signals: [
+      "Cuando no tienes claro que decir o a quien hablarle.",
+      "Cuando tu oferta existe, pero no se entiende rapido.",
+      "Cuando quieres crecer sin copiar lo que hacen otros."
+    ],
+    questions: [
+      "Que problema concreto resuelve tu marca?",
+      "Que tipo de cliente quieres atraer?",
+      "Que debe pensar una persona despues de ver tu contenido?"
+    ],
+    nextStep: "Con esta base pasamos a Leer: revisar como se ve tu presencia actual frente al mercado."
   },
   {
     letter: "L",
@@ -301,7 +312,18 @@ const methodDetails = [
       "Lectura de competidores, referentes y oportunidades.",
       "Identificacion de brechas de claridad, autoridad y conversion."
     ],
-    output: "Un diagnostico claro de lo que funciona, lo que confunde y lo que conviene corregir primero."
+    output: "Un diagnostico claro de lo que funciona, lo que confunde y lo que conviene corregir primero.",
+    signals: [
+      "Cuando publicas, pero no sabes si estas avanzando.",
+      "Cuando tu imagen se ve activa, pero no necesariamente posicionada.",
+      "Cuando necesitas saber que esta frenando confianza o conversion."
+    ],
+    questions: [
+      "Que percibe alguien nuevo al entrar a tus perfiles?",
+      "Tu contenido demuestra experiencia o solo actividad?",
+      "Que oportunidades estan aprovechando otros y tu marca todavia no?"
+    ],
+    nextStep: "Con el diagnostico claro, estructuramos la comunicacion para dejar de improvisar."
   },
   {
     letter: "E",
@@ -314,7 +336,18 @@ const methodDetails = [
       "Tono, narrativa y enfoque visual.",
       "Sistema editorial conectado a objetivos comerciales."
     ],
-    output: "Una estructura de comunicacion que permite producir con coherencia y menos improvisacion."
+    output: "Una estructura de comunicacion que permite producir con coherencia y menos improvisacion.",
+    signals: [
+      "Cuando cada publicacion parece una idea aislada.",
+      "Cuando no hay temas base para sostener la autoridad.",
+      "Cuando tu equipo o proveedor necesita una guia clara para producir."
+    ],
+    questions: [
+      "Que pilares deben repetirse para posicionar la marca?",
+      "Que tono transmite confianza sin sonar generico?",
+      "Que mensajes deben aparecer una y otra vez en distintos formatos?"
+    ],
+    nextStep: "Con la estructura lista, pasamos a convertirla en contenido, diseno y recursos visibles."
   },
   {
     letter: "V",
@@ -327,7 +360,18 @@ const methodDetails = [
       "Diseno visual coherente con la marca.",
       "Recursos para captar interes y abrir conversaciones."
     ],
-    output: "Activos digitales listos para comunicar valor y sostener presencia profesional."
+    output: "Activos digitales listos para comunicar valor y sostener presencia profesional.",
+    signals: [
+      "Cuando ya hay estrategia, pero falta material para mostrarla.",
+      "Cuando necesitas contenido que eduque, atraiga y genere confianza.",
+      "Cuando quieres que tu presencia se vea mas profesional y consistente."
+    ],
+    questions: [
+      "Que piezas ayudan al cliente a entender tu valor?",
+      "Que formatos conectan mejor con tu audiencia?",
+      "Que recurso puede iniciar una conversacion comercial?"
+    ],
+    nextStep: "Cuando la presencia ya tiene forma, buscamos acelerar produccion, seguimiento y procesos."
   },
   {
     letter: "A",
@@ -340,7 +384,18 @@ const methodDetails = [
       "Plantillas, prompts y sistemas asistidos por IA.",
       "Automatizaciones para captacion, contenido o atencion."
     ],
-    output: "Un sistema mas eficiente que permite crecer sin depender de trabajo manual para todo."
+    output: "Un sistema mas eficiente que permite crecer sin depender de trabajo manual para todo.",
+    signals: [
+      "Cuando ya hay demanda, pero el seguimiento se vuelve lento.",
+      "Cuando el contenido consume demasiado tiempo operativo.",
+      "Cuando quieres usar IA sin perder voz, criterio ni estrategia."
+    ],
+    questions: [
+      "Que tareas se repiten cada semana?",
+      "Que respuestas o procesos podrian automatizarse?",
+      "Donde la IA puede ayudar sin reemplazar el criterio humano?"
+    ],
+    nextStep: "Despues de acelerar, medimos para ajustar lo que realmente genera claridad, confianza y oportunidades."
   },
   {
     letter: "R",
@@ -353,7 +408,18 @@ const methodDetails = [
       "Ajustes de mensajes, piezas y embudos.",
       "Mejora continua de contenido, captacion y posicionamiento."
     ],
-    output: "Un ciclo de aprendizaje para que la marca no solo publique, sino mejore con direccion."
+    output: "Un ciclo de aprendizaje para que la marca no solo publique, sino mejore con direccion.",
+    signals: [
+      "Cuando ya tienes contenido, pero necesitas saber que mejorar.",
+      "Cuando hay leads o interacciones, pero falta lectura comercial.",
+      "Cuando quieres convertir la presencia digital en un sistema que aprende."
+    ],
+    questions: [
+      "Que contenido genera mas confianza o conversaciones?",
+      "Donde se pierde la atencion del prospecto?",
+      "Que ajustes pueden mejorar conversion sin cambiar toda la estrategia?"
+    ],
+    nextStep: "El metodo vuelve a iniciar con nuevos aprendizajes: explorar mejor, leer mejor y ajustar con mas precision."
   }
 ];
 
@@ -365,9 +431,12 @@ const serviceDetails = [
     intro: "Para profesionales que venden confianza, experiencia y criterio, pero necesitan comunicarlo con mas claridad.",
     sections: [
       ["Para quien es", "Consultores, especialistas, coaches, medicos, abogados, asesores, formadores y lideres que necesitan posicionarse como referentes."],
+      ["Problema que resuelve", "Evita que tu experiencia se perciba dispersa, poco diferenciada o dificil de entender. Ordena tu voz, tu valor y tu forma de presentarte."],
       ["Que trabajamos", "Mensaje central, propuesta de valor, pilares de contenido, narrativa personal, imagen profesional y ruta de autoridad."],
-      ["Resultado esperado", "Una marca personal mas clara, confiable y preparada para atraer oportunidades, clientes o alianzas."]
+      ["Resultado esperado", "Una marca personal mas clara, confiable y preparada para atraer oportunidades, clientes, alianzas o invitaciones."]
     ],
+    process: ["Diagnostico de percepcion", "Definicion de posicionamiento", "Pilares y narrativa", "Sistema visual y contenido base"],
+    deliverables: ["Mapa de marca personal", "Pilares de contenido", "Bio y mensajes clave", "Guia inicial de autoridad"],
     bullets: ["Diagnostico de autoridad", "Pilares de contenido", "Narrativa profesional", "Sistema visual inicial"]
   },
   {
@@ -377,9 +446,12 @@ const serviceDetails = [
     intro: "Para marcas que ya publican o quieren publicar, pero necesitan un sistema que conecte contenido con objetivos.",
     sections: [
       ["Para quien es", "Negocios que sienten que publican al azar, dependen de ideas de ultimo momento o no logran sostener constancia."],
+      ["Problema que resuelve", "Reduce la improvisacion y convierte el contenido en una herramienta de educacion, confianza, posicionamiento y captacion."],
       ["Que trabajamos", "Calendario editorial, temas estrategicos, copywriting, formatos, publicaciones, reportes y ajustes."],
       ["Resultado esperado", "Contenido mas coherente, facil de sostener y alineado a confianza, educacion y conversion."]
     ],
+    process: ["Lectura de objetivos", "Definicion de pilares", "Calendario y guiones", "Publicacion, medicion y ajustes"],
+    deliverables: ["Calendario editorial", "Copys y guiones", "Piezas de contenido", "Reporte de aprendizaje"],
     bullets: ["Calendario editorial", "Copy y guiones", "Piezas para redes", "Revision y optimizacion"]
   },
   {
@@ -389,9 +461,12 @@ const serviceDetails = [
     intro: "Para elevar la percepcion visual de la marca y hacer que cada punto de contacto se sienta mas profesional.",
     sections: [
       ["Para quien es", "Marcas que tienen una buena oferta, pero su imagen no transmite el mismo nivel de calidad o confianza."],
+      ["Problema que resuelve", "Evita que la comunicacion se vea improvisada, inconsistente o poco memorable aunque el servicio sea bueno."],
       ["Que trabajamos", "Linea grafica, plantillas, piezas comerciales, recursos visuales, presentaciones y coherencia de marca."],
       ["Resultado esperado", "Una presencia visual mas ordenada, elegante y facil de reconocer."]
     ],
+    process: ["Revision de identidad actual", "Direccion visual", "Diseno de sistema grafico", "Aplicacion en piezas clave"],
+    deliverables: ["Linea visual", "Plantillas", "Piezas comerciales", "Guia de uso inicial"],
     bullets: ["Linea grafica", "Plantillas digitales", "Material comercial", "Sistema visual"]
   },
   {
@@ -401,9 +476,12 @@ const serviceDetails = [
     intro: "Para mostrar el lado humano, experto y profesional de la marca con fotos, videos y piezas de contenido.",
     sections: [
       ["Para quien es", "Profesionales y negocios que necesitan verse confiables, actuales y cercanos sin perder formalidad."],
+      ["Problema que resuelve", "Ayuda a dejar de depender solo de artes genericos y mostrar personas, procesos, ambientes, prueba y experiencia real."],
       ["Que trabajamos", "Fotografia, reels, videos educativos, piezas de autoridad, contenido para campanas y material institucional."],
       ["Resultado esperado", "Una biblioteca visual que permite comunicar mejor y producir contenido con mas fuerza."]
     ],
+    process: ["Plan de produccion", "Guiones o shotlist", "Sesion de foto/video", "Edicion y entrega por formatos"],
+    deliverables: ["Fotografias editadas", "Videos o reels", "Piezas educativas", "Material para campanas"],
     bullets: ["Fotografia profesional", "Reels", "Videos educativos", "Contenido para campanas"]
   },
   {
@@ -413,9 +491,12 @@ const serviceDetails = [
     intro: "Para convertir visitas e interes en conversaciones, solicitudes, descargas o leads reales.",
     sections: [
       ["Para quien es", "Marcas que ya generan atencion, pero no tienen una ruta clara para captar prospectos o medir oportunidades."],
+      ["Problema que resuelve", "Crea un camino practico para que el visitante no solo vea la marca, sino que avance hacia diagnostico, contacto o recurso."],
       ["Que trabajamos", "Landing pages, formularios, lead magnets, paginas de servicio, diagnosticos, medicion y rutas a WhatsApp."],
       ["Resultado esperado", "Un sistema de captacion mas claro que no dependa solo de mensajes sueltos en redes."]
     ],
+    process: ["Mapa del embudo", "Oferta o recurso de entrada", "Pagina y formulario", "Medicion y seguimiento"],
+    deliverables: ["Landing o pagina de captacion", "Formulario conectado", "Lead magnet", "Eventos basicos de conversion"],
     bullets: ["Landing pages", "Formularios", "Lead magnets", "Medicion de conversion"]
   },
   {
@@ -425,9 +506,12 @@ const serviceDetails = [
     intro: "Para ahorrar tiempo, ordenar procesos y usar inteligencia artificial con criterio comercial.",
     sections: [
       ["Para quien es", "Negocios que quieren responder mejor, crear mas rapido, organizar tareas o automatizar procesos repetitivos."],
+      ["Problema que resuelve", "Evita usar IA de forma aislada o improvisada. La integra a tareas concretas donde puede ahorrar tiempo y mejorar seguimiento."],
       ["Que trabajamos", "Chatbots, asistentes IA, flujos de respuesta, prompts, automatizaciones y procesos internos."],
       ["Resultado esperado", "Mas eficiencia sin perder control, criterio ni calidad en la comunicacion."]
     ],
+    process: ["Identificacion de procesos", "Diseno del flujo", "Base de conocimiento o prompts", "Prueba, ajustes e implementacion"],
+    deliverables: ["Mapa de automatizacion", "Prompts o asistente inicial", "Flujos de respuesta", "Guia de uso para el equipo"],
     bullets: ["Chatbots", "Asistentes IA", "Flujos de respuesta", "Automatizaciones"]
   }
 ];
@@ -492,6 +576,20 @@ function renderMethodBody(item) {
         <p>${item.output}</p>
       </div>
     </div>
+    <div class="detail-modal__sections detail-modal__sections--compact">
+      <article>
+        <h3>Cuándo aplica</h3>
+        <ul>${item.signals.map((point) => `<li>${point}</li>`).join("")}</ul>
+      </article>
+      <article>
+        <h3>Preguntas clave</h3>
+        <ul>${item.questions.map((point) => `<li>${point}</li>`).join("")}</ul>
+      </article>
+    </div>
+    <div class="detail-modal__note">
+      <strong>Siguiente movimiento</strong>
+      <p>${item.nextStep}</p>
+    </div>
   `;
 }
 
@@ -500,6 +598,20 @@ function renderServiceBody(item) {
     <div class="detail-modal__chips">${item.bullets.map((point) => `<span>${point}</span>`).join("")}</div>
     <div class="detail-modal__sections">
       ${item.sections.map(([title, copy]) => `<article><h3>${title}</h3><p>${copy}</p></article>`).join("")}
+    </div>
+    <div class="detail-modal__columns">
+      <div>
+        <h3>Proceso de trabajo</h3>
+        <ol>${item.process.map((point) => `<li>${point}</li>`).join("")}</ol>
+      </div>
+      <div>
+        <h3>Entregables posibles</h3>
+        <ul>${item.deliverables.map((point) => `<li>${point}</li>`).join("")}</ul>
+      </div>
+    </div>
+    <div class="detail-modal__note">
+      <strong>Recomendación</strong>
+      <p>Si no tienes claro si esta es tu ruta, el diagnostico ayuda a priorizar antes de invertir en una solucion completa.</p>
     </div>
   `;
 }
