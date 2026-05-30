@@ -13,6 +13,7 @@ El objetivo comercial principal del sitio es llevar al visitante a solicitar un 
 ## Estructura
 
 - `docs/`: notas estrategicas, auditorias y decisiones del proyecto.
+  - `docs/vision-plataforma-elevium.md`: vision completa de evolucion hacia plataforma, panel, recursos, analitica, membership y merch corporativo.
 - `backups/`: respaldos manuales si hace falta antes de cambios grandes.
 - `index.html`: pagina de inicio y promesa principal.
 - `metodo-elevar.html`: metodo ELEVAR.
