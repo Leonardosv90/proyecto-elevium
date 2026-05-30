@@ -281,6 +281,7 @@ const methodDetails = [
     letter: "E",
     title: "Explorar",
     eyebrow: "Fase 01",
+    visual: "mpfwxqop-ChatGPT-Image-21-may-2026_-01_56_59-p.m..webp",
     summary: "Entendemos la marca, la oferta, el publico y las prioridades antes de proponer contenido o acciones.",
     detail: "Esta fase evita empezar por piezas sueltas. Primero aclaramos que vendes, a quien quieres atraer, que te diferencia, que percepcion tienes hoy y que objetivo comercial debe sostener la comunicacion.",
     includes: [
@@ -305,6 +306,7 @@ const methodDetails = [
     letter: "L",
     title: "Leer",
     eyebrow: "Fase 02",
+    visual: "mpfwxqop-ChatGPT-Image-21-may-2026_-01_56_59-p.m..webp",
     summary: "Diagnosticamos presencia digital, competencia, mensajes, canales y puntos de mejora.",
     detail: "Aqui observamos lo que la marca ya muestra al mercado: perfiles, contenido, coherencia visual, confianza, llamados a la accion y oportunidades frente a competidores o referentes.",
     includes: [
@@ -329,6 +331,7 @@ const methodDetails = [
     letter: "E",
     title: "Estructurar",
     eyebrow: "Fase 03",
+    visual: "mpfwxqop-ChatGPT-Image-21-may-2026_-01_56_59-p.m..webp",
     summary: "Convertimos la informacion en pilares, narrativa, tono, mensajes y sistema de publicacion.",
     detail: "Esta fase ordena las ideas para que la marca no dependa de ocurrencias. Se define que temas sostienen la autoridad, como se habla, que argumentos se repiten y como se conecta el contenido con objetivos.",
     includes: [
@@ -353,6 +356,7 @@ const methodDetails = [
     letter: "V",
     title: "Visibilizar",
     eyebrow: "Fase 04",
+    visual: "mpfwxqop-ChatGPT-Image-21-may-2026_-01_56_59-p.m..webp",
     summary: "Creamos contenido, diseno y recursos que muestran el valor de la marca con claridad.",
     detail: "La visibilidad no es solo aparecer. Es aparecer con una presencia que se entienda, se recuerde y genere confianza. Aqui se producen piezas, recursos y activos digitales alineados al sistema.",
     includes: [
@@ -377,6 +381,7 @@ const methodDetails = [
     letter: "A",
     title: "Acelerar",
     eyebrow: "Fase 05",
+    visual: "mpfwxqop-ChatGPT-Image-21-may-2026_-01_56_59-p.m..webp",
     summary: "Usamos IA, automatizacion y procesos para producir mejor, responder mas rapido y escalar.",
     detail: "Cuando la base esta ordenada, la IA puede acelerar sin volver caotica la comunicacion. Se crean flujos, plantillas, asistentes o procesos que ahorran tiempo y mantienen criterio.",
     includes: [
@@ -401,6 +406,7 @@ const methodDetails = [
     letter: "R",
     title: "Refinar",
     eyebrow: "Fase 06",
+    visual: "mpfwxqop-ChatGPT-Image-21-may-2026_-01_56_59-p.m..webp",
     summary: "Medimos, aprendemos y optimizamos para mejorar claridad, conversion y resultados.",
     detail: "La estrategia no termina al publicar. Se revisan datos, preguntas frecuentes, respuestas del mercado y oportunidades de mejora para ajustar contenido, procesos y ofertas.",
     includes: [
@@ -621,16 +627,17 @@ function openDetailModal(items, index) {
   activeModalItems = items;
   activeModalIndex = Math.min(Math.max(index, 0), items.length - 1);
   const item = activeModalItems[activeModalIndex];
-  const isService = Boolean(item.image);
+  const isService = Boolean(item.sections);
   const media = modal.querySelector("[data-modal-media]");
+  const visual = item.image || item.visual;
 
   modal.querySelector("[data-modal-eyebrow]").textContent = item.eyebrow || item.category;
   modal.querySelector("[data-modal-title]").textContent = isService ? item.title : `${item.letter} · ${item.title}`;
   modal.querySelector("[data-modal-summary]").textContent = item.summary || item.intro;
   modal.querySelector("[data-modal-body]").innerHTML = isService ? renderServiceBody(item) : renderMethodBody(item);
 
-  if (isService) {
-    media.innerHTML = `<img src="${item.image}" alt="${item.title}">`;
+  if (visual) {
+    media.innerHTML = `<img src="${visual}" alt="${item.title}"><div class="detail-modal__media-label"><strong>${isService ? item.category : item.letter}</strong><span>${item.title}</span></div>`;
     media.hidden = false;
   } else {
     media.innerHTML = `<strong>${item.letter}</strong><span>${item.title}</span>`;
