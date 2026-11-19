@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Entrá al estudio creativo de Elevium. Estrategia digital, producción audiovisual e inteligencia artificial aplicada desde El Salvador.">
-<meta name="theme-color" content="#e1edf6">
+<meta name="theme-color" content="#102641">
 <title>Elevium — Ideas en movimiento</title>
 <link rel="preload" href="/assets/v2/barlow-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/v2/studio/pabellon.webp" as="image">
+<link rel="preload" href="/assets/v2/studio/recorrido-inicio.webp" as="image">
 <style>
 @font-face{font-family:Barlow;src:url("/assets/v2/barlow-regular.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
 @font-face{font-family:Barlow;src:url("/assets/v2/barlow-bold.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
@@ -52,13 +52,13 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 .scene{position:relative}
 .journey{position:relative}
 .stage{background:#0a1e3a}
-.sky,.model,.world,.flash,.fragments,.meter,.waypoints{display:none}
+.film,.fragments,.meter,.waypoints{display:none}
 .scene-hero{min-height:max(39rem,var(--screen));color:var(--navy);background:radial-gradient(ellipse at 57% 50%,#f7fbff 12%,#dceaf5 61%,#b6cede 100%);isolation:isolate;overflow:hidden}
 .hero-title{position:relative;z-index:3;padding-top:clamp(7rem,16svh,12rem);text-align:center}
 .hero-title h1{font-size:clamp(3.6rem,8.05vw,8.9rem);line-height:.88}
 .hero-title h1 span{display:block}
 .hero-title h1 .hero-accent{color:var(--brand)}
-.static-model{position:relative;z-index:4;max-width:min(82vw,69rem);margin:-3rem auto 0}
+.static-model{position:relative;z-index:4;max-width:min(82vw,69rem);margin:1.5rem auto 1.2rem;border-radius:.7rem}
 .hero-meta{position:relative;z-index:7;display:flex;align-items:end;justify-content:space-between;gap:1rem;padding-bottom:2rem}
 .hero-meta p{max-width:25rem;font-size:clamp(1.02rem,1.45vw,1.25rem);text-wrap:pretty}
 .scroll-cue{display:inline-flex;align-items:center;gap:.65rem;min-height:2.8rem;font-weight:700;text-decoration:none;flex-shrink:0}
@@ -67,7 +67,7 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 .scroll-cue:hover i{background:var(--cyan);border-color:var(--cyan)}
 .scene-flight,.scene-interior,.scene-method{color:white;padding:clamp(5rem,10svh,8rem) 0}
 .scene-flight{background:var(--navy)}
-.scene-interior{background:linear-gradient(90deg,#07192df5,#07192d61),url("/assets/v2/studio/interior.webp") center/cover}
+.scene-interior{background:linear-gradient(90deg,#07192df5,#07192d61),url("/assets/v2/studio/recorrido-interior.webp") center/cover}
 .scene-method{background:#061528}
 .flight-copy{text-align:center;max-width:55rem}
 .flight-copy .kicker{margin-inline:auto;color:var(--cyan)}
@@ -106,28 +106,34 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 .phase[open] summary::after{content:"−"}
 .phase p{margin-top:.5rem;color:#d0e4f4;font-size:.98rem;max-width:42ch}
 .motion .journey{height:calc(4.8 * var(--screen))}
-.motion .stage{position:sticky;top:0;height:var(--screen);overflow:hidden;isolation:isolate}
+.motion .stage{position:sticky;top:0;height:var(--screen);overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#214261,#345575 39%,#1a395a 67%,#0c203a)}
 .motion .waypoints{display:block;position:absolute;inset:0;pointer-events:none}
 .waypoints span{position:absolute;left:0}
 .waypoints #entrada{top:calc((100% - var(--screen)) * .35)}
 .waypoints #dentro{top:calc((100% - var(--screen)) * .61)}
 .waypoints #como-trabajamos{top:calc((100% - var(--screen)) * .90)}
-.motion .sky,.motion .world,.motion .model,.motion .flash,.motion .fragments,.motion .meter{display:block;position:absolute;pointer-events:none}
-.sky{
-  z-index:0;inset:0;background:
-  radial-gradient(ellipse at 80% 77%,#f3faff 0%,transparent 48%),
-  radial-gradient(ellipse at 15% 76%,#b2ccdf 0%,transparent 44%),
-  radial-gradient(ellipse at 48% 27%,#fbfdff 4%,#e2edf6 47%,#adc5da 100%);
+.motion .film,.motion .fragments,.motion .meter{display:block;position:absolute;pointer-events:none}
+.film{
+  --extra-width:max(0px,calc(var(--screen) * 16 / 9 - 100vw));
+  --feather:calc(12% * (1 - var(--film-fill,0)));
+  z-index:1;top:50%;left:50%;
+  width:calc(100vw + var(--extra-width) * (.18 + .82 * var(--film-fill,0)));
+  aspect-ratio:16/9;translate:-50% -50%;
+  mask-image:linear-gradient(180deg,transparent,#000 var(--feather),#000 calc(100% - var(--feather)),transparent);
 }
-.sky::after{content:"";position:absolute;inset:48% -6% -10%;background:radial-gradient(ellipse 28% 19% at 66% 65%,#fffd,transparent),radial-gradient(ellipse 36% 25% at 11% 59%,#f5fbff,transparent),radial-gradient(ellipse 32% 30% at 87% 42%,#fff,transparent);filter:blur(25px);transform:translateX(var(--cloud-x,0px));animation:sky-drift 19s ease-in-out infinite alternate}
-@keyframes sky-drift{to{translate:2.4% -2%}}
-.world{z-index:2;inset:0;opacity:var(--world,0);overflow:hidden}
-.world img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform:scale(var(--world-zoom,1.1));transform-origin:68% 53%}
-.threshold{z-index:1;opacity:var(--threshold,0)}
-.threshold img{transform:scale(var(--threshold-zoom,1));transform-origin:67% 58%}
-.world::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#061526ee 2%,#06152688 43%,#04111d08 76%),linear-gradient(0deg,#061528d4,transparent 25%,transparent 76%,#06152846);opacity:var(--world-shade,.82)}
-.model{z-index:4;top:57%;left:50%;width:min(86vw,113svh,82rem);height:auto;max-width:none;transform-origin:69% 41%;transform:translate3d(calc(-50% + var(--move-x,0vw)) ,calc(-50% + var(--move-y,0vh)),0) scale(var(--zoom,1));opacity:var(--model,1);filter:drop-shadow(0 1.6rem 2.8rem #27446140);will-change:transform,opacity}
-.flash{z-index:5;inset:0;background:radial-gradient(ellipse at 65% 50%,#d4f2ffe0,#4d9ed66b 38%,transparent 76%);opacity:var(--flash,0)}
+.film :is(img,video){position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.film-end{opacity:var(--film-fallback,0)}
+.film video{opacity:0}
+.film-ready .film video{opacity:1}
+.motion .stage::before,.motion .stage::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none}
+.motion .stage::before{
+  background:linear-gradient(90deg,#061526e8,#06152680 44%,#04111d12 83%),linear-gradient(0deg,#061528a8,transparent 28%);
+  opacity:var(--film-shade,0);
+}
+.motion .stage::after{
+  background:linear-gradient(180deg,#061526a8 5%,#06152657 32%,transparent 53%,transparent 64%,#061526d1 100%);
+  opacity:var(--hero,1);
+}
 .fragments{inset:0;visibility:var(--fragments-visibility,visible)}
 .fragment{
   position:absolute;z-index:var(--layer);width:var(--size);height:auto;
@@ -186,13 +192,16 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
   to{transform:translateY(var(--bob)) rotate(var(--sway)) scaleX(var(--facing,1))}
 }
 .motion .scene{position:absolute;inset:0;padding:0;background:none;min-height:0;pointer-events:none}
-.motion .scene-hero{z-index:auto;isolation:auto;overflow:visible}
+.motion .scene-hero{z-index:auto;isolation:auto;overflow:visible;color:white}
 .motion .scene:not(.scene-hero){z-index:6;display:grid;align-items:center}
 .motion .scene.is-active :is(a,button,summary){pointer-events:auto}
 .motion .scene:not(.is-active){visibility:hidden}
 .motion .scene-hero .static-model{display:none}
 .motion .hero-title{opacity:var(--hero,1);transform:translateY(var(--hero-rise,0px));filter:blur(var(--hero-blur,0px))}
+.motion .hero-title .hero-accent{color:#b6f0ff}
 .motion .hero-meta{position:absolute;inset:auto var(--gutter) 3.25rem;width:auto;max-width:91rem;margin-inline:auto;padding:0;opacity:var(--hero,1)}
+.motion .scroll-cue i{border-color:#b9eaff}
+.motion .scroll-cue:hover i{color:var(--navy)}
 .motion .scene-flight{opacity:var(--vision,0);transform:translateY(var(--vision-rise,0px));filter:blur(var(--vision-blur,0px))}
 .motion .scene-interior{opacity:var(--tour,0)}
 .motion .scene-method{opacity:var(--method,0);background:linear-gradient(90deg,#061528d8,#06152888)}
@@ -237,7 +246,6 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 @media (max-width:56rem){
   .nav-desktop{gap:.8rem}
   .nav-desktop a{font-size:.95rem}
-  .model{top:55%}
   .motion .tour-content{padding-top:1rem}
   .motion .hot-panel{width:min(35vw,29rem)}
 }
@@ -254,19 +262,22 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
   .scene-hero{min-height:max(35rem,var(--screen))}
   .hero-title{padding-top:clamp(5.9rem,15svh,8.5rem)}
   .hero-title h1{font-size:clamp(3.2rem,12.8vw,6rem);line-height:.91}
-  .static-model{width:100%;max-width:35rem;margin:-1rem auto 0}
+  .static-model{width:calc(100% - 2 * var(--gutter));max-width:35rem;margin:1.2rem auto .9rem}
   .hero-meta{display:grid;gap:.5rem}
   .hero-meta p{max-width:27ch}
   .scroll-cue{justify-self:start}
   .motion .journey{height:calc(4.25 * var(--screen))}
   .motion .hero-meta{bottom:2.25rem}
-  .model{width:min(125vw,87svh,47rem);top:52%;left:49%}
+  .motion .stage{background:linear-gradient(180deg,#214c75 14%,#284e73 41%,#1a395a 67%,#0c203a)}
+  .film{
+    width:calc(100vw + var(--extra-width) * var(--film-fill,0));
+    left:calc(50% - var(--extra-width) * var(--film-fill,0) * .26);
+  }
   .fragment--far-west,.fragment--middle-east,.fragment--near-west{display:none}
   .fragment--far-east{--size:clamp(1.3rem,6.8vw,2.6rem);--top:34%;--left:87%}
   .fragment--middle-west{--size:clamp(2.15rem,12vw,4.8rem);--top:42%;--left:11%}
   .fragment--near-east{--size:clamp(4.6rem,24vw,8rem);--top:69%;--left:99%}
-  .world img{object-position:64% 50%}
-  .world::after{background:linear-gradient(180deg,#061526dc,#06152647 42%,#0615267a 63%,#061526ee)}
+  .motion .stage::before{background:linear-gradient(180deg,#061526dd,#06152657 42%,#0615268c 65%,#061526ee)}
   .motion .scene-flight{padding-bottom:5rem}
   .motion .tour-content{min-height:0;padding-block:3rem .5rem;align-self:center;gap:.75rem}
   .tour-intro h2,.method-intro h2{font-size:clamp(2.35rem,8.9vw,4rem);margin-block:.4rem .5rem}
@@ -295,7 +306,6 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
   .motion .method-layout{gap:.65rem}
   .hot-panel{min-height:4.4rem}
   .hero-title{padding-top:5.5rem}
-  .model{top:51%}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -327,11 +337,11 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
   <section class="journey" aria-label="Recorrido por el estudio Elevium">
     <div class="waypoints" aria-hidden="true"><span id="entrada"></span><span id="dentro"></span><span id="como-trabajamos"></span></div>
     <div class="stage">
-      <div class="sky" aria-hidden="true"></div>
-      <div class="world threshold" aria-hidden="true"><img src="/assets/v2/studio/acceso.webp" width="1400" height="788" alt="" decoding="async"></div>
-      <div class="world" aria-hidden="true"><img src="/assets/v2/studio/interior.webp" width="1520" height="855" alt="" decoding="async"></div>
-      <img class="model" src="/assets/v2/studio/pabellon.webp" width="1450" height="967" alt="" fetchpriority="high">
-      <div class="flash" aria-hidden="true"></div>
+      <div class="film" aria-hidden="true">
+        <img src="/assets/v2/studio/recorrido-inicio.webp" width="1280" height="720" alt="" fetchpriority="high">
+        <img class="film-end" src="/assets/v2/studio/recorrido-interior.webp" width="1280" height="720" alt="" decoding="async" fetchpriority="low">
+        <video data-src="/assets/v2/studio/recorrido.mp4" preload="auto" muted playsinline disablepictureinpicture></video>
+      </div>
       <div class="fragments" aria-hidden="true">
         <img class="fragment fragment--far fragment--far-west" src="/assets/v2/studio/fragmento-aleta.webp" width="400" height="333" alt="" decoding="async">
         <img class="fragment fragment--far fragment--far-east" src="/assets/v2/studio/fragmento-obsidiana.webp" width="301" height="340" alt="" decoding="async">
@@ -345,7 +355,7 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
         <div class="hero-title inner">
           <h1 id="titulo"><span>Ideas en</span> <span class="hero-accent">movimiento.</span></h1>
         </div>
-        <img class="static-model" src="/assets/v2/studio/pabellon.webp" width="1450" height="967" alt="Pabellón conceptual de Elevium suspendido en el aire" fetchpriority="high">
+        <img class="static-model" src="/assets/v2/studio/recorrido-inicio.webp" width="1280" height="720" alt="Pabellón conceptual de Elevium suspendido sobre las nubes" fetchpriority="high">
         <div class="hero-meta inner">
           <p>Estrategia digital, producción audiovisual e IA aplicada para empresas.</p>
           <a class="scroll-cue" href="#transicion" data-jump><i aria-hidden="true"></i>Explorar el estudio</a>
@@ -447,6 +457,8 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 const page = document.body;
 const journey = document.querySelector(".journey");
 const stage = document.querySelector(".stage");
+const film = stage.querySelector("video");
+const filmFrameRate = 24;
 const services = document.querySelector("#servicios");
 const transition = document.querySelector(".scene-flight");
 const mast = document.querySelector(".mast");
@@ -474,7 +486,6 @@ const pointerPlanes = {
   middle: { x: 0, y: 0, response: .13 },
   near: { x: 0, y: 0, response: .24 }
 };
-const drift = pointerPlanes.middle;
 const limit = (value) => Math.min(1, Math.max(0, value));
 const segment = (value, start, end) => limit((value - start) / (end - start));
 const ease = (value) => value * value * (3 - 2 * value);
@@ -493,13 +504,20 @@ function makeActive(index) {
   });
 }
 
+function setFilmProgress(value) {
+  if (film.seeking || film.error || !Number.isFinite(film.duration)) return;
+  const lastFrame = Math.max(0, Math.round(film.duration * filmFrameRate) - 1);
+  const time = Math.round(value * lastFrame) / filmFrameRate;
+  if (Math.abs(film.currentTime - time) >= .5 / filmFrameRate) film.currentTime = time;
+}
+
 function drawScene() {
   scheduled = false;
   const bounds = journey.getBoundingClientRect();
   const stageHeight = stage.clientHeight;
   const raw = isAnimated ? limit(-bounds.top / Math.max(1, bounds.height - stageHeight)) : 0;
   const visible = bounds.top <= stageHeight && bounds.bottom > 0;
-  const tone = (isAnimated ? raw >= .16 : transition.getBoundingClientRect().top < mast.clientHeight) &&
+  const tone = (isAnimated || transition.getBoundingClientRect().top < mast.clientHeight) &&
     services.getBoundingClientRect().top > mast.clientHeight ? "dark" : "light";
   if (tone !== headerTone) {
     mast.dataset.tone = headerTone = tone;
@@ -511,6 +529,7 @@ function drawScene() {
   if (Math.abs(raw - progress) < .001) progress = raw;
 
   const p = progress;
+  if (visible) setFilmProgress(segment(p, .025, .485));
   const fragmentsVisible = p < .30;
   let settling = false;
   for (const [plane, offset] of Object.entries(pointerPlanes)) {
@@ -518,12 +537,9 @@ function drawScene() {
     offset.y += (pointer.y - offset.y) * offset.response;
     stage.style.setProperty(`--${plane}-x`, offset.x.toFixed(4));
     stage.style.setProperty(`--${plane}-y`, offset.y.toFixed(4));
-    const planeVisible = plane === "middle" || fragmentsVisible;
-    settling ||= planeVisible && Math.abs(offset.x - pointer.x) + Math.abs(offset.y - pointer.y) > .007;
+    settling ||= fragmentsVisible && Math.abs(offset.x - pointer.x) + Math.abs(offset.y - pointer.y) > .007;
   }
 
-  const push = ease(segment(p, .025, .39));
-  const world = ease(segment(p, .29, .46));
   const hero = 1 - ease(segment(p, .055, .17));
   const flight = range(p, .20, .30, .415, .485);
   const tour = range(p, .51, .58, .72, .79);
@@ -533,17 +549,9 @@ function drawScene() {
     "--hero": hero,
     "--hero-rise": `${-32 * (1 - hero)}px`,
     "--hero-blur": `${8 * (1 - hero)}px`,
-    "--zoom": 1 + 2.85 * push,
-    "--move-x": `${(small.matches ? -11 : -20) * push - 1.25 * drift.x}vw`,
-    "--move-y": `${(small.matches ? 1 : 3) * push - .9 * drift.y}vh`,
-    "--model": 1 - ease(segment(p, .21, .36)),
-    "--threshold": ease(segment(p, .17, .31)),
-    "--threshold-zoom": 1.025 + .31 * ease(segment(p, .18, .47)),
-    "--world": world,
-    "--world-zoom": 1.125 - .125 * ease(segment(p, .32, .65)),
-    "--world-shade": .73 + method * .09,
-    "--cloud-x": `${10 * drift.x - 42 * push}px`,
-    "--flash": range(p, .205, .275, .29, .40) * .52,
+    "--film-fill": ease(segment(p, .055, .36)),
+    "--film-fallback": ease(segment(p, .17, .44)),
+    "--film-shade": .83 * ease(segment(p, .12, .55)),
     "--depart-far": ease(segment(p, .065, .30)),
     "--depart-middle": ease(segment(p, .045, .25)),
     "--depart-near": ease(segment(p, .025, .19)),
@@ -572,6 +580,7 @@ function requestDraw() {
 function syncMotion() {
   isAnimated = !motionPreference.matches && (innerHeight >= (small.matches ? 605 : 540));
   page.classList.toggle("motion", isAnimated);
+  if (isAnimated && !film.hasAttribute("src")) film.src = film.dataset.src;
   progress = null;
   if (!isAnimated) makeActive(-1);
   document.querySelectorAll("[data-jump]").forEach((a) => {
@@ -589,6 +598,14 @@ function syncMotion() {
 addEventListener("scroll", requestDraw, { passive: true });
 addEventListener("resize", syncMotion, { passive: true });
 motionPreference.addEventListener("change", syncMotion);
+film.addEventListener("loadedmetadata", requestDraw);
+for (const event of ["loadeddata", "seeked"]) {
+  film.addEventListener(event, () => {
+    if (film.readyState >= 2 && !film.seeking) stage.classList.add("film-ready");
+    requestDraw();
+  });
+}
+film.addEventListener("error", () => stage.classList.remove("film-ready"));
 addEventListener("pointermove", (event) => {
   if (!isAnimated || !pointerPreference.matches || event.pointerType === "touch") return;
   pointer = { x: event.clientX / innerWidth - .5, y: event.clientY / innerHeight - .5 };
