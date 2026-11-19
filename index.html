@@ -130,37 +130,60 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 .flash{z-index:5;inset:0;background:radial-gradient(ellipse at 65% 50%,#d4f2ffe0,#4d9ed66b 38%,transparent 76%);opacity:var(--flash,0)}
 .fragments{inset:0;visibility:var(--fragments-visibility,visible)}
 .fragment{
-  position:absolute;z-index:var(--layer,5);width:var(--size);height:auto;
+  position:absolute;z-index:var(--layer);width:var(--size);height:auto;
   top:var(--top);left:var(--left);
   translate:calc(-50% + var(--pointer-x,0) * var(--parallax) + var(--departure,0) * var(--exit-x))
     calc(-50% + var(--pointer-y,0) * var(--parallax) * .72 + var(--departure,0) * var(--exit-y));
   scale:calc(1 + var(--departure,0) * var(--growth));
-  rotate:calc(var(--pointer-x,0) * 7deg + var(--departure,0) * var(--turn));
+  rotate:calc(var(--pointer-x,0) * var(--pointer-turn) + var(--departure,0) * var(--turn));
   opacity:calc(var(--fragment-opacity,1) * var(--clarity,1));
   animation:fragment-drift var(--duration) var(--delay) ease-in-out infinite alternate;
   animation-play-state:var(--fragments-animation,running);
 }
-.fragment-west{
-  --size:clamp(3.25rem,7.7vw,8.6rem);--top:31%;--left:10.5%;--parallax:55px;
-  --exit-x:-27vw;--exit-y:-14vh;--growth:.38;--turn:-21deg;--duration:7s;--delay:-2s;
+.fragment--far{
+  --layer:2;--pointer-x:var(--far-x,0);--pointer-y:var(--far-y,0);--departure:var(--depart-far,0);
+  --parallax:18px;--pointer-turn:3deg;--growth:.13;--clarity:.48;
+  --duration:14s;--bob:3%;--sway:2deg;
+  filter:blur(clamp(1px,.16vw,2px));
 }
-.fragment-east{
-  --size:clamp(2.4rem,5vw,5.3rem);--top:29%;--left:90%;--parallax:29px;
-  --exit-x:19vw;--exit-y:-16vh;--growth:.25;--turn:17deg;--duration:8.4s;--delay:-4s;
-  --layer:2;--clarity:.66;filter:blur(.6px);
+.fragment--middle{
+  --layer:3;--pointer-x:var(--middle-x,0);--pointer-y:var(--middle-y,0);--departure:var(--depart-middle,0);
+  --parallax:66px;--pointer-turn:7deg;--growth:.36;
+  --duration:8s;--bob:6%;--sway:4deg;
 }
-.fragment-near{
-  --size:clamp(5rem,11vw,12rem);--top:68%;--left:90%;--parallax:104px;
-  --exit-x:36vw;--exit-y:19vh;--growth:.68;--turn:24deg;--duration:6.5s;--delay:-1s;
+.fragment--near{
+  --layer:5;--pointer-x:var(--near-x,0);--pointer-y:var(--near-y,0);--departure:var(--depart-near,0);
+  --parallax:clamp(105px,12vw,180px);--pointer-turn:14deg;--growth:.76;
+  --duration:5.6s;--bob:10%;--sway:6deg;
+  filter:blur(clamp(3px,.45vw,8px));
 }
-.fragment-south{
-  --size:clamp(3.65rem,8vw,8.2rem);--top:71%;--left:3%;--parallax:78px;
-  --exit-x:-25vw;--exit-y:13vh;--growth:.54;--turn:-23deg;--duration:7.8s;--delay:-5s;
-  --clarity:.89;
+.fragment--far-west{
+  --size:clamp(1.55rem,3.4vw,3.8rem);--top:39%;--left:5.5%;
+  --exit-x:-13vw;--exit-y:-5vh;--turn:-9deg;--delay:-9s;
+}
+.fragment--far-east{
+  --size:clamp(1.85rem,4.5vw,4.7rem);--top:21%;--left:92%;
+  --exit-x:15vw;--exit-y:-8vh;--turn:9deg;--delay:-3s;--facing:-1;
+}
+.fragment--middle-west{
+  --size:clamp(3.2rem,8vw,9rem);--top:33%;--left:16.5%;
+  --exit-x:-33vw;--exit-y:-17vh;--turn:-21deg;--delay:-1.5s;
+}
+.fragment--middle-east{
+  --size:clamp(3.8rem,9.3vw,10rem);--top:73%;--left:80%;
+  --exit-x:38vw;--exit-y:15vh;--turn:21deg;--delay:-6s;
+}
+.fragment--near-west{
+  --size:clamp(7.5rem,22vw,21rem);--top:66%;--left:1%;
+  --exit-x:-34vw;--exit-y:14vh;--turn:-24deg;--delay:-4s;
+}
+.fragment--near-east{
+  --size:clamp(6.7rem,18vw,17rem);--top:46%;--left:99%;
+  --exit-x:33vw;--exit-y:12vh;--turn:28deg;--delay:-.6s;--facing:-1;
 }
 @keyframes fragment-drift{
-  from{transform:translateY(-5%) rotate(-4deg)}
-  to{transform:translateY(7%) rotate(4deg)}
+  from{transform:translateY(calc(var(--bob) * -1)) rotate(calc(var(--sway) * -1)) scaleX(var(--facing,1))}
+  to{transform:translateY(var(--bob)) rotate(var(--sway)) scaleX(var(--facing,1))}
 }
 .motion .scene{position:absolute;inset:0;padding:0;background:none;min-height:0;pointer-events:none}
 .motion .scene-hero{z-index:auto;isolation:auto;overflow:visible}
@@ -238,9 +261,10 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
   .motion .journey{height:calc(4.25 * var(--screen))}
   .motion .hero-meta{bottom:2.25rem}
   .model{width:min(125vw,87svh,47rem);top:52%;left:49%}
-  .fragment-east,.fragment-south{display:none}
-  .fragment-west{--size:clamp(2.15rem,12vw,4.8rem);--top:42%;--left:9%;--clarity:.84}
-  .fragment-near{--size:clamp(2.9rem,17vw,6rem);--top:66%;--left:94%;--clarity:.88}
+  .fragment--far-west,.fragment--middle-east,.fragment--near-west{display:none}
+  .fragment--far-east{--size:clamp(1.3rem,6.8vw,2.6rem);--top:34%;--left:87%}
+  .fragment--middle-west{--size:clamp(2.15rem,12vw,4.8rem);--top:42%;--left:11%}
+  .fragment--near-east{--size:clamp(4.6rem,24vw,8rem);--top:69%;--left:99%}
   .world img{object-position:64% 50%}
   .world::after{background:linear-gradient(180deg,#061526dc,#06152647 42%,#0615267a 63%,#061526ee)}
   .motion .scene-flight{padding-bottom:5rem}
@@ -309,10 +333,12 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
       <img class="model" src="/assets/v2/studio/pabellon.webp" width="1450" height="967" alt="" fetchpriority="high">
       <div class="flash" aria-hidden="true"></div>
       <div class="fragments" aria-hidden="true">
-        <img class="fragment fragment-west" src="/assets/v2/studio/fragmento-basalto.webp" alt="" decoding="async">
-        <img class="fragment fragment-east" src="/assets/v2/studio/fragmento-obsidiana.webp" alt="" decoding="async">
-        <img class="fragment fragment-near" src="/assets/v2/studio/fragmento-aleta.webp" alt="" decoding="async">
-        <img class="fragment fragment-south" src="/assets/v2/studio/fragmento-obsidiana.webp" alt="" decoding="async">
+        <img class="fragment fragment--far fragment--far-west" src="/assets/v2/studio/fragmento-aleta.webp" width="400" height="333" alt="" decoding="async">
+        <img class="fragment fragment--far fragment--far-east" src="/assets/v2/studio/fragmento-obsidiana.webp" width="301" height="340" alt="" decoding="async">
+        <img class="fragment fragment--middle fragment--middle-west" src="/assets/v2/studio/fragmento-basalto.webp" width="370" height="340" alt="" decoding="async">
+        <img class="fragment fragment--middle fragment--middle-east" src="/assets/v2/studio/fragmento-aleta.webp" width="400" height="333" alt="" decoding="async">
+        <img class="fragment fragment--near fragment--near-west" src="/assets/v2/studio/fragmento-obsidiana.webp" width="301" height="340" alt="" decoding="async">
+        <img class="fragment fragment--near fragment--near-east" src="/assets/v2/studio/fragmento-basalto.webp" width="370" height="340" alt="" decoding="async">
       </div>
 
       <section class="scene scene-hero is-active" aria-labelledby="titulo">
@@ -443,7 +469,12 @@ let isAnimated = false;
 let activeScene = -1;
 let headerTone = "";
 let pointer = { x: 0, y: 0 };
-let drift = { x: 0, y: 0 };
+const pointerPlanes = {
+  far: { x: 0, y: 0, response: .05 },
+  middle: { x: 0, y: 0, response: .13 },
+  near: { x: 0, y: 0, response: .24 }
+};
+const drift = pointerPlanes.middle;
 const limit = (value) => Math.min(1, Math.max(0, value));
 const segment = (value, start, end) => limit((value - start) / (end - start));
 const ease = (value) => value * value * (3 - 2 * value);
@@ -478,17 +509,25 @@ function drawScene() {
   if (progress === null || !visible) progress = raw;
   else progress += (raw - progress) * .18;
   if (Math.abs(raw - progress) < .001) progress = raw;
-  drift.x += (pointer.x - drift.x) * .13;
-  drift.y += (pointer.y - drift.y) * .13;
 
   const p = progress;
+  const fragmentsVisible = p < .30;
+  let settling = false;
+  for (const [plane, offset] of Object.entries(pointerPlanes)) {
+    offset.x += (pointer.x - offset.x) * offset.response;
+    offset.y += (pointer.y - offset.y) * offset.response;
+    stage.style.setProperty(`--${plane}-x`, offset.x.toFixed(4));
+    stage.style.setProperty(`--${plane}-y`, offset.y.toFixed(4));
+    const planeVisible = plane === "middle" || fragmentsVisible;
+    settling ||= planeVisible && Math.abs(offset.x - pointer.x) + Math.abs(offset.y - pointer.y) > .007;
+  }
+
   const push = ease(segment(p, .025, .39));
   const world = ease(segment(p, .29, .46));
   const hero = 1 - ease(segment(p, .055, .17));
   const flight = range(p, .20, .30, .415, .485);
   const tour = range(p, .51, .58, .72, .79);
   const method = ease(segment(p, .79, .875));
-  const fragmentsVisible = p < .30;
   const variables = {
     "--progress": p,
     "--hero": hero,
@@ -505,9 +544,9 @@ function drawScene() {
     "--world-shade": .73 + method * .09,
     "--cloud-x": `${10 * drift.x - 42 * push}px`,
     "--flash": range(p, .205, .275, .29, .40) * .52,
-    "--pointer-x": drift.x.toFixed(4),
-    "--pointer-y": drift.y.toFixed(4),
-    "--departure": ease(segment(p, .025, .30)),
+    "--depart-far": ease(segment(p, .065, .30)),
+    "--depart-middle": ease(segment(p, .045, .25)),
+    "--depart-near": ease(segment(p, .025, .19)),
     "--fragment-opacity": 1 - ease(segment(p, .20, .30)),
     "--fragments-visibility": fragmentsVisible ? "visible" : "hidden",
     "--fragments-animation": fragmentsVisible && visible ? "running" : "paused",
@@ -521,7 +560,6 @@ function drawScene() {
   for (const [key, value] of Object.entries(variables)) stage.style.setProperty(key, value);
   makeActive(p < .18 ? 0 : p < .495 ? 1 : p < .785 ? 2 : 3);
 
-  const settling = Math.abs(drift.x - pointer.x) + Math.abs(drift.y - pointer.y) > .007;
   if (visible && (p !== raw || settling)) requestDraw();
 }
 
