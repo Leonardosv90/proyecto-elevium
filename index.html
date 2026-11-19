@@ -52,7 +52,7 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 .scene{position:relative}
 .journey{position:relative}
 .stage{background:#0a1e3a}
-.sky,.model,.world,.flash,.flight-debris,.meter,.waypoints{display:none}
+.sky,.model,.world,.flash,.fragments,.meter,.waypoints{display:none}
 .scene-hero{min-height:max(39rem,var(--screen));color:var(--navy);background:radial-gradient(ellipse at 57% 50%,#f7fbff 12%,#dceaf5 61%,#b6cede 100%);isolation:isolate;overflow:hidden}
 .hero-title{position:relative;z-index:3;padding-top:clamp(7rem,16svh,12rem);text-align:center}
 .hero-title h1{font-size:clamp(3.6rem,8.05vw,8.9rem);line-height:.88}
@@ -112,7 +112,7 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 .waypoints #entrada{top:calc((100% - var(--screen)) * .35)}
 .waypoints #dentro{top:calc((100% - var(--screen)) * .61)}
 .waypoints #como-trabajamos{top:calc((100% - var(--screen)) * .90)}
-.motion .sky,.motion .world,.motion .model,.motion .flash,.motion .flight-debris,.motion .meter{display:block;position:absolute;pointer-events:none}
+.motion .sky,.motion .world,.motion .model,.motion .flash,.motion .fragments,.motion .meter{display:block;position:absolute;pointer-events:none}
 .sky{
   z-index:0;inset:0;background:
   radial-gradient(ellipse at 80% 77%,#f3faff 0%,transparent 48%),
@@ -128,10 +128,40 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 .world::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#061526ee 2%,#06152688 43%,#04111d08 76%),linear-gradient(0deg,#061528d4,transparent 25%,transparent 76%,#06152846);opacity:var(--world-shade,.82)}
 .model{z-index:4;top:57%;left:50%;width:min(86vw,113svh,82rem);height:auto;max-width:none;transform-origin:69% 41%;transform:translate3d(calc(-50% + var(--move-x,0vw)) ,calc(-50% + var(--move-y,0vh)),0) scale(var(--zoom,1));opacity:var(--model,1);filter:drop-shadow(0 1.6rem 2.8rem #27446140);will-change:transform,opacity}
 .flash{z-index:5;inset:0;background:radial-gradient(ellipse at 65% 50%,#d4f2ffe0,#4d9ed66b 38%,transparent 76%);opacity:var(--flash,0)}
-.flight-debris{z-index:5;inset:0;opacity:var(--debris,0)}
-.flight-debris span{position:absolute;width:clamp(2rem,7vw,12rem);height:1px;background:linear-gradient(90deg,transparent,#c2ebff);box-shadow:0 0 .85rem #57bfff;transform:translateX(var(--streak,0vw)) rotate(-15deg)}
-.flight-debris span:first-child{left:6%;top:53%}
-.flight-debris span:last-child{left:77%;top:30%;transform:translateX(calc(0vw - var(--streak,0vw))) rotate(19deg)}
+.fragments{inset:0;visibility:var(--fragments-visibility,visible)}
+.fragment{
+  position:absolute;z-index:var(--layer,5);width:var(--size);height:auto;
+  top:var(--top);left:var(--left);
+  translate:calc(-50% + var(--pointer-x,0) * var(--parallax) + var(--departure,0) * var(--exit-x))
+    calc(-50% + var(--pointer-y,0) * var(--parallax) * .72 + var(--departure,0) * var(--exit-y));
+  scale:calc(1 + var(--departure,0) * var(--growth));
+  rotate:calc(var(--pointer-x,0) * 7deg + var(--departure,0) * var(--turn));
+  opacity:calc(var(--fragment-opacity,1) * var(--clarity,1));
+  animation:fragment-drift var(--duration) var(--delay) ease-in-out infinite alternate;
+  animation-play-state:var(--fragments-animation,running);
+}
+.fragment-west{
+  --size:clamp(3.25rem,7.7vw,8.6rem);--top:31%;--left:10.5%;--parallax:55px;
+  --exit-x:-27vw;--exit-y:-14vh;--growth:.38;--turn:-21deg;--duration:7s;--delay:-2s;
+}
+.fragment-east{
+  --size:clamp(2.4rem,5vw,5.3rem);--top:29%;--left:90%;--parallax:29px;
+  --exit-x:19vw;--exit-y:-16vh;--growth:.25;--turn:17deg;--duration:8.4s;--delay:-4s;
+  --layer:2;--clarity:.66;filter:blur(.6px);
+}
+.fragment-near{
+  --size:clamp(5rem,11vw,12rem);--top:68%;--left:90%;--parallax:104px;
+  --exit-x:36vw;--exit-y:19vh;--growth:.68;--turn:24deg;--duration:6.5s;--delay:-1s;
+}
+.fragment-south{
+  --size:clamp(3.65rem,8vw,8.2rem);--top:71%;--left:3%;--parallax:78px;
+  --exit-x:-25vw;--exit-y:13vh;--growth:.54;--turn:-23deg;--duration:7.8s;--delay:-5s;
+  --clarity:.89;
+}
+@keyframes fragment-drift{
+  from{transform:translateY(-5%) rotate(-4deg)}
+  to{transform:translateY(7%) rotate(4deg)}
+}
 .motion .scene{position:absolute;inset:0;padding:0;background:none;min-height:0;pointer-events:none}
 .motion .scene-hero{z-index:auto;isolation:auto;overflow:visible}
 .motion .scene:not(.scene-hero){z-index:6;display:grid;align-items:center}
@@ -208,6 +238,9 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
   .motion .journey{height:calc(4.25 * var(--screen))}
   .motion .hero-meta{bottom:2.25rem}
   .model{width:min(125vw,87svh,47rem);top:52%;left:49%}
+  .fragment-east,.fragment-south{display:none}
+  .fragment-west{--size:clamp(2.15rem,12vw,4.8rem);--top:42%;--left:9%;--clarity:.84}
+  .fragment-near{--size:clamp(2.9rem,17vw,6rem);--top:66%;--left:94%;--clarity:.88}
   .world img{object-position:64% 50%}
   .world::after{background:linear-gradient(180deg,#061526dc,#06152647 42%,#0615267a 63%,#061526ee)}
   .motion .scene-flight{padding-bottom:5rem}
@@ -275,7 +308,12 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
       <div class="world" aria-hidden="true"><img src="/assets/v2/studio/interior.webp" width="1520" height="855" alt="" decoding="async"></div>
       <img class="model" src="/assets/v2/studio/pabellon.webp" width="1450" height="967" alt="" fetchpriority="high">
       <div class="flash" aria-hidden="true"></div>
-      <div class="flight-debris" aria-hidden="true"><span></span><span></span></div>
+      <div class="fragments" aria-hidden="true">
+        <img class="fragment fragment-west" src="/assets/v2/studio/fragmento-basalto.webp" alt="" decoding="async">
+        <img class="fragment fragment-east" src="/assets/v2/studio/fragmento-obsidiana.webp" alt="" decoding="async">
+        <img class="fragment fragment-near" src="/assets/v2/studio/fragmento-aleta.webp" alt="" decoding="async">
+        <img class="fragment fragment-south" src="/assets/v2/studio/fragmento-obsidiana.webp" alt="" decoding="async">
+      </div>
 
       <section class="scene scene-hero is-active" aria-labelledby="titulo">
         <div class="hero-title inner">
@@ -450,6 +488,7 @@ function drawScene() {
   const flight = range(p, .20, .30, .415, .485);
   const tour = range(p, .51, .58, .72, .79);
   const method = ease(segment(p, .79, .875));
+  const fragmentsVisible = p < .30;
   const variables = {
     "--progress": p,
     "--hero": hero,
@@ -466,8 +505,12 @@ function drawScene() {
     "--world-shade": .73 + method * .09,
     "--cloud-x": `${10 * drift.x - 42 * push}px`,
     "--flash": range(p, .205, .275, .29, .40) * .52,
-    "--debris": range(p, .055, .15, .27, .37) * .75,
-    "--streak": `${-32 * push}vw`,
+    "--pointer-x": drift.x.toFixed(4),
+    "--pointer-y": drift.y.toFixed(4),
+    "--departure": ease(segment(p, .025, .30)),
+    "--fragment-opacity": 1 - ease(segment(p, .20, .30)),
+    "--fragments-visibility": fragmentsVisible ? "visible" : "hidden",
+    "--fragments-animation": fragmentsVisible && visible ? "running" : "paused",
     "--vision": flight,
     "--vision-rise": `${(1 - flight) * 19}px`,
     "--vision-blur": `${(1 - flight) * 9}px`,
@@ -513,6 +556,10 @@ addEventListener("pointermove", (event) => {
   pointer = { x: event.clientX / innerWidth - .5, y: event.clientY / innerHeight - .5 };
   requestDraw();
 }, { passive: true });
+document.documentElement.addEventListener("pointerleave", () => {
+  pointer = { x: 0, y: 0 };
+  requestDraw();
+});
 
 menu.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && menu.open) {
