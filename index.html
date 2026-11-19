@@ -205,6 +205,14 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 .motion .scroll-cue i{border-color:#b9eaff}
 .motion .scroll-cue:hover i{color:var(--navy)}
 .motion .scene-flight{opacity:var(--vision,0);transform:translateY(var(--vision-rise,0px));filter:blur(var(--vision-blur,0px))}
+.motion .flight-copy{
+  position:relative;isolation:isolate;
+  text-shadow:0 .06em .36em #020b18dc,0 1px 2px #020b1899;
+}
+.motion .flight-copy::before{
+  content:"";position:absolute;z-index:-1;inset:-56% -24%;pointer-events:none;
+  background:radial-gradient(ellipse closest-side,#020b1abf 0%,#020b1aa8 43%,#020b1a63 66%,#020b1a22 85%,transparent 100%);
+}
 .motion .scene-interior{opacity:var(--tour,0)}
 .motion .scene-method{opacity:var(--method,0);background:linear-gradient(90deg,#061528d8,#06152888)}
 .motion .tour-content{min-height:min(68svh,43rem);padding-top:3rem;align-content:start}
