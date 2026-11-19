@@ -72,7 +72,8 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
 .flight-copy{text-align:center;max-width:55rem}
 .flight-copy .kicker{margin-inline:auto;color:var(--cyan)}
 .flight-copy h2{font-size:clamp(3rem,6.8vw,7.4rem);margin-top:.65rem}
-.flight-copy h2 span{display:block}
+.flight-copy h2 > span{display:block}
+.flight-accent{color:var(--cyan)}
 .flight-copy p{font-size:clamp(1.075rem,2vw,1.4rem);margin-block:1.15rem 0;color:#d3e9f8}
 .tour-content{position:relative;z-index:1;display:grid;gap:1.2rem}
 .tour-intro{max-width:32rem}
@@ -392,7 +393,7 @@ h1,h2,h3{font-weight:700;line-height:.98;letter-spacing:-.052em;overflow-wrap:br
       <section class="scene scene-flight" id="transicion" aria-labelledby="titulo-vuelo">
         <div class="flight-copy inner">
           <span class="kicker">El estudio Elevium</span>
-          <h2 id="titulo-vuelo"><span>De la idea</span> <span>a la acción.</span></h2>
+          <h2 id="titulo-vuelo"><span>De la <span class="flight-accent">IDEA</span></span> <span>a la acción.</span></h2>
           <p>Conectamos estrategia, producción y tecnología para que tu mensaje llegue más lejos.</p>
         </div>
       </section>
