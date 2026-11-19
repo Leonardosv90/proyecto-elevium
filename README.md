@@ -20,7 +20,8 @@ El objetivo comercial principal del sitio es llevar al visitante a solicitar un 
 - `servicios.html`: soluciones principales.
 - `marca-personal-profesional.html`: pagina para profesionales expertos.
 - `ia-para-negocios.html`: IA aplicada a procesos y marketing.
-- `casos.html`: casos/proyectos.
+- `casos.html`: casos existentes. La demostración nueva está en `portafolio/de-la-toma-al-anuncio/`.
+- `promocionales/`: catálogo y cotización por WhatsApp.
 - `recursos.html`: recurso descargable y articulos iniciales.
 - `sobre-elevium.html`: historia, vision y posicionamiento.
 - `diagnostico.html`: formulario principal de captacion.
@@ -32,13 +33,13 @@ El objetivo comercial principal del sitio es llevar al visitante a solicitar un 
 
 ## Como abrirlo
 
-Abre `index.html` directamente en el navegador. No requiere servidor ni instalacion para funcionar como sitio estatico.
+Inicia un servidor estático desde la raíz del repositorio para probar las rutas y sus recursos.
 
-Ruta de entrada:
-
-```text
-proyecto-elevium/index.html
+```sh
+python3 -m http.server 8000
 ```
+
+Abre [localhost:8000](http://localhost:8000).
 
 ## Deploy en GitHub + Vercel
 
